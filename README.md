@@ -5,8 +5,8 @@ Universal dependency to build against jdk.tools (AKA tools.jar) in a portable wa
 ## TL;DR
 
 When maven gives you headaches trying to use some of the `tools.jar` classes (because
-the system scoped dependency have different paths in different JDKs or does not
-even exist), following dependency should get you going:
+the system scoped dependency has different paths in different JDKs, or does not
+even exist), the following dependency should get you going:
 
 ```
     <dependency>
@@ -18,7 +18,7 @@ even exist), following dependency should get you going:
 
 ## Problem
 
-Prior Jigsaw introduced in Java 9, maven needs to pass the jar on `javac` classpath
+Prior to Jigsaw introduced in Java 9, maven needs to pass the jar on `javac` classpath
 at compile time to build projects referring to its classes. Despite the fact the jar
 is distributed together with JDK, maven needs to be instructed to use it explicitly.
 `system` dependency scope is here to do just that but there are still some caveats
@@ -34,9 +34,9 @@ can distinguish those situations and declare particular dependency if needed.
 Consult the `pom.xml` for more details.
 
 As the actual maven wizardry is quite elaborate, surprising to newcomers and a
-subject of future improvements, it is better not co copy-paste it around. Hence
+subject of future improvements, it is better not to copy-paste it around. Hence
 this module exists so you do not have to know or care about the details.
 
-This dependency (hosted on maven central) do not have any runtime footprint (external
+This dependency (hosted on maven central) does not have any runtime footprint (external
 dependencies, classes loaded) but merely instruct maven what to do on compile time.
 All the transitive dependencies brought to the client projects are `system` scoped.
